@@ -41,7 +41,7 @@ export default class HTML5Backend implements Backend {
 	private sourceNodes: Map<string, Element> = new Map()
 	private sourceNodeOptions: Map<string, any> = new Map()
 
-	private enterLeaveCounter: EnterLeaveCounter = new EnterLeaveCounter()
+	private enterLeaveCounter: EnterLeaveCounter = new EnterLeaveCounter(node => this.isNodeInDocument(node))
 
 	private dragStartSourceIds: string[] | null = null
 	private dropTargetIds: string[] = []
