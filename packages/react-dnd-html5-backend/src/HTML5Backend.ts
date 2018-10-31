@@ -424,12 +424,17 @@ export default class HTML5Backend implements Backend {
 				dataTransfer.setData('application/json', {})
 
 				// If requested, set a DownloadURL.
-				const download = this.getCurrentSourceNodeOptions().download;
+				const sourceNodeOptions = this.getCurrentSourceNodeOptions();
+				const {download, text} = sourceNodeOptions;
+
 				if (download && download.name && download.url) {
 					const downloadName = download.name.replace(/:/g, '-')
 					const data = `application/octet-stream:${downloadName}:${download.url}`
 					dataTransfer.setData('DownloadURL', data)
 				}
+
+				if (text)
+					dataTransfer.setData('Text', text);
 			} catch (err) {
 				// IE doesn't support MIME types in setData
 			}
