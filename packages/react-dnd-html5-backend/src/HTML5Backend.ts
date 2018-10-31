@@ -433,8 +433,10 @@ export default class HTML5Backend implements Backend {
 					dataTransfer.setData('DownloadURL', data)
 				}
 
-				if (text)
-					dataTransfer.setData('Text', text);
+				if (text) {
+					const transferText = (typeof text === 'function') ? text() : text.toString();
+					dataTransfer.setData('Text', transferText);
+				}
 			} catch (err) {
 				// IE doesn't support MIME types in setData
 			}
