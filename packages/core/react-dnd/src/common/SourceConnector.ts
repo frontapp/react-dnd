@@ -181,8 +181,6 @@ export class SourceConnector implements Connector {
 		if (this.dragSourceUnsubscribe) {
 			this.dragSourceUnsubscribe()
 			this.dragSourceUnsubscribe = undefined
-			this.dragPreviewNode = null
-			this.dragPreviewRef = null
 		}
 	}
 
@@ -190,8 +188,6 @@ export class SourceConnector implements Connector {
 		if (this.dragPreviewUnsubscribe) {
 			this.dragPreviewUnsubscribe()
 			this.dragPreviewUnsubscribe = undefined
-			this.dragPreviewNode = null
-			this.dragPreviewRef = null
 		}
 	}
 

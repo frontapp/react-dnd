@@ -5,6 +5,11 @@ export interface DndOptions<Props> {
 	arePropsEqual?: (first: Props, second: Props) => boolean
 }
 
+export interface DragSourceDownload {
+	name: string
+	url: string
+}
+
 export interface DragSourceOptions {
 	/**
 	 * Optional. A string. By default, 'move'. In the browsers that support this feature, specifying 'copy'
@@ -12,6 +17,8 @@ export interface DragSourceOptions {
 	 * this option to provide a hint to the user about whether an action is destructive.
 	 */
 	dropEffect?: string
+	text?: string | (() => string)
+	download?: DragSourceDownload
 }
 
 export interface DragPreviewOptions {
