@@ -416,6 +416,21 @@ export default class HTML5Backend implements Backend {
 			try {
 				// Firefox won't drag without setting data
 				dataTransfer!.setData('application/json', {} as any)
+
+				// If requested, set a DownloadURL.
+				const sourceNodeOptions = this.getCurrentSourceNodeOptions();
+				const {download, text} = sourceNodeOptions;
+
+				if (download && download.name && download.url) {
+					const downloadName = download.name.replace(/:/g, '-')
+					const data = `application/octet-stream:${downloadName}:${download.url}`
+					dataTransfer!.setData('DownloadURL', data)
+				}
+
+				if (text) {
+					const transferText = (typeof text === 'function') ? text() : text.toString();
+					dataTransfer!.setData('Text', transferText);
+				}
 			} catch (err) {
 				// IE doesn't support MIME types in setData
 			}
