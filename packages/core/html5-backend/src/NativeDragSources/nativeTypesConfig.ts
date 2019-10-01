@@ -16,6 +16,13 @@ export interface NativeItemConfig {
 export const nativeTypesConfig: {
 	[key: string]: NativeItemConfig
 } = {
+	[NativeTypes.FRONT_ATTACHMENT]: {
+		exposeProperties: {
+			text: (dataTransfer: DataTransfer, matchesTypes: string[]) =>
+				getDataFromDataTransfer(dataTransfer, matchesTypes, ''),
+		},
+		matchesTypes: ['x-front-attachment'],
+	},
 	[NativeTypes.FILE]: {
 		exposeProperties: {
 			files: (dataTransfer: DataTransfer) =>
