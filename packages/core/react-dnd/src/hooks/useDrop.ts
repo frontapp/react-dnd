@@ -39,7 +39,10 @@ export function useDrop<
 	useEffect(() => {
 		connector.dropTargetOptions = spec.options || null
 		connector.reconnect()
-		return () => connector.disconnect()
 	}, [spec.options])
+
+	useEffect(() => {
+		return () => connector.receiveHandlerId(null)
+	}, [connector])
 	return [result, connectDropTarget]
 }

@@ -43,7 +43,7 @@ export class TargetConnector implements Connector {
 			this.didOptionsChange()
 
 		if (didChange) {
-			this.disconnect()
+			this.disconnectDropTarget()
 		}
 
 		const dropTarget = this.dropTarget
@@ -65,13 +65,6 @@ export class TargetConnector implements Connector {
 				dropTarget,
 				this.dropTargetOptions,
 			)
-		}
-	}
-
-	public disconnect() {
-		if (this.unsubscribeDropTarget) {
-			this.unsubscribeDropTarget()
-			this.unsubscribeDropTarget = undefined
 		}
 	}
 
@@ -104,6 +97,13 @@ export class TargetConnector implements Connector {
 			this.lastConnectedDropTargetOptions,
 			this.dropTargetOptions,
 		)
+	}
+
+	private disconnectDropTarget() {
+		if (this.unsubscribeDropTarget) {
+			this.unsubscribeDropTarget()
+			this.unsubscribeDropTarget = undefined
+		}
 	}
 
 	private get dropTarget() {

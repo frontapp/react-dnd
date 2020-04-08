@@ -10,7 +10,6 @@ export interface Connector {
 	connectTarget: any
 	receiveHandlerId(handlerId: Identifier | null): void
 	reconnect(): void
-	disconnect(): void
 }
 
 export class SourceConnector implements Connector {
@@ -37,7 +36,6 @@ export class SourceConnector implements Connector {
 			this.reconnectDragPreview()
 		},
 	})
-
 	private handlerId: Identifier | null = null
 
 	// The drop target may either be attached via ref or connect function
@@ -91,11 +89,6 @@ export class SourceConnector implements Connector {
 	public reconnect() {
 		this.reconnectDragSource()
 		this.reconnectDragPreview()
-	}
-
-	public disconnect() {
-		this.disconnectDragSource()
-		this.disconnectDragPreview()
 	}
 
 	private reconnectDragSource() {

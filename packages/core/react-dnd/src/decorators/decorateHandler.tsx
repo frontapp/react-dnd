@@ -168,7 +168,6 @@ export default function decorateHandler<Props, CollectedProps, ItemIdType>({
 			this.disposable.dispose()
 			if (this.handlerConnector) {
 				this.handlerConnector.receiveHandlerId(null)
-				this.handlerConnector.disconnect()
 			}
 		}
 
