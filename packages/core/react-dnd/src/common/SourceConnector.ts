@@ -10,6 +10,7 @@ export interface Connector {
 	connectTarget: any
 	receiveHandlerId(handlerId: Identifier | null): void
 	reconnect(): void
+	disconnect(): void
 }
 
 export class SourceConnector implements Connector {
