@@ -50,5 +50,8 @@ export function useDrag<
 		connector.dragPreviewOptions = specRef.current.previewOptions || null
 		connector.reconnect()
 	}, [connector])
+	useEffect(() => {
+		return () => connector.receiveHandlerId(null)
+	}, [connector])
 	return [result, connectDragSource, connectDragPreview]
 }
